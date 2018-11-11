@@ -1,3 +1,6 @@
+#key
+/lib/api_config.dart
+
 # Miscellaneous
 *.class
 *.lock
