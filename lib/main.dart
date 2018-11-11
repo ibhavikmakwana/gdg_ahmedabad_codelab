@@ -6,66 +6,38 @@ import 'package:gdg_ahmedabad_codelab/api_config.dart';
 import 'package:gdg_ahmedabad_codelab/network_util.dart';
 import 'package:gdg_ahmedabad_codelab/photo_util.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: PhotosHome(),
-  ));
-}
+void main() => runApp(MyApp());
 
-class PhotosHome extends StatefulWidget {
-  @override
-  PhotosHomeState createState() {
-    return new PhotosHomeState();
-  }
-}
-
-class PhotosHomeState extends State<PhotosHome> {
-  List<PhotoUtil> photoList = [];
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   NetworkUtil().getPhotos().then((data) {
-  //     print('done');
-  //   });
-  // }
-
-  Future<dynamic> getPhotos() async {
-    var response = await http.get(APIConfig.photosUrl).then((onValue){
-      print(onValue);
-    });
-    var decodedJson = jsonDecode(response.body);
-    print(decodedJson);
-    print(response.body);
-    return decodedJson;
-    // setState(() {
-    //   // photoList = PhotoUtil.fromJson(decodedJson);
-    // });
-  }
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: new AppBar(
-        title: Text('Photos'),
-        centerTitle: true,
-        leading: IconButton(
-          icon: Icon(Icons.refresh),
-          onPressed: () {
-              debugPrint('done');
-            getPhotos().then((data) {
-              setState(() {
-                photoList = data;
-              });
-            });
-          },
-        ),
+    return MaterialApp(
+      title: 'Fetch Data Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
-      body: ListView.builder(
-        itemCount: photoList.length,
-        itemBuilder: (context, index) {
-          return Text(photoList[index].urls);
-        },
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Fetch Data Example'),
+        ),
+        body: Center(
+          child: FutureBuilder<List<PhotoUtil>>(
+            future: NetworkUtil().fetchPost(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return ListView.builder(
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return Image.network(snapshot.data[index].urls.small);
+                  },
+                );
+              } else if (snapshot.hasError) {
+                return Text("${snapshot.error}");
+              }
+              return CircularProgressIndicator();
+            },
+          ),
+        ),
       ),
     );
   }

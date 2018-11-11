@@ -2,14 +2,11 @@ class PhotoUtil {
   String id;
   String created_at;
   String updated_at;
-  String width;
-  String height;
+  int width;
+  int height;
   String color;
   String description;
-  String urls;
-  String categories;
-  String slug;
-  String user;
+  PhotoUrls urls;
 
   PhotoUtil({
     this.id,
@@ -20,9 +17,6 @@ class PhotoUtil {
     this.color,
     this.description,
     this.urls,
-    this.categories,
-    this.slug,
-    this.user,
   });
 
   static PhotoUtil fromJson(Map<String, dynamic> json) {
@@ -34,24 +28,26 @@ class PhotoUtil {
       height: json['height'],
       color: json['color'],
       description: json['description'],
-      urls: json['urls'],
-      categories: json['categories'],
-      slug: json['slug'],
-      user: json['user'],
+      urls: PhotoUrls.fromJson(json['urls']),
     );
   }
+}
 
-  Map<String, dynamic> toJson() => {
-        'id': id,
-        'created_at': created_at,
-        'updated_at': updated_at,
-        'width': width,
-        'height': height,
-        'color': color,
-        'description': description,
-        'urls': urls,
-        'categories': categories,
-        'slug': slug,
-        'user': user,
-      };
+class PhotoUrls {
+  String raw;
+  String full;
+  String regular;
+  String small;
+  String thumb;
+
+  PhotoUrls({this.raw, this.full, this.regular, this.small, this.thumb});
+  static PhotoUrls fromJson(Map<String, dynamic> json) {
+    return PhotoUrls(
+      raw: json['raw'],
+      full: json['full'],
+      regular: json['regular'],
+      small: json['small'],
+      thumb: json['thumb'],
+    );
+  }
 }

@@ -5,15 +5,20 @@ import 'package:gdg_ahmedabad_codelab/photo_util.dart';
 import 'package:gdg_ahmedabad_codelab/api_config.dart';
 
 class NetworkUtil {
-  Future<List<PhotoUtil>> getPhotos() async {
-    print('insideutil');
-    String url = APIConfig.photosUrl;
-    List<PhotoUtil> response;
-    await http.get(url).then((data){
-      print(data); 
-      response = json.decode(data.body);
-   
-    });
-    return response;
+  Future<List<PhotoUtil>> fetchPost() async {
+    List<PhotoUtil> list = [];
+    final response = await http.get(APIConfig.photosUrl);
+    if (response.statusCode == 200) {
+      List decodedJson = json.decode(response.body);
+      print(json.decode(response.body));
+      for (int i = 0; i < decodedJson.length; i++) {
+        print(i);
+        list.add(PhotoUtil.fromJson(decodedJson[i]));
+      }
+      print(list);
+      return list;
+    } else {
+      throw Exception('Failed to load post');
+    }
   }
 }
