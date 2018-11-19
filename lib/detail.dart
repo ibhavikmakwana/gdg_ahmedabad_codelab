@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:gdg_ahmedabad_codelab/photo_util.dart';
+import 'package:gdg_ahmedabad_codelab/photo_response.dart';
+import 'package:gdg_ahmedabad_codelab/widgets/bottom_aligned_text.dart';
 
 class Detail extends StatelessWidget {
-  final PhotoUtil photoList;
+  final PhotoResponse photoList;
 
   Detail(this.photoList);
 
@@ -13,41 +14,30 @@ class Detail extends StatelessWidget {
         body: Stack(
           children: <Widget>[
             buildImageHero(),
-            buildBottomText(),
-            Align(
-              alignment: Alignment.topLeft,
-              child: IconButton(
-                icon: Icon(
-                  Icons.arrow_back,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ),
+            BottomAlignedText(photoList.user.name),
+            buildBackIcon(context),
           ],
         ),
       ),
     );
   }
 
-  ///Bottom Text displays the name of the user
-  buildBottomText() {
+  ///
+  Align buildBackIcon(BuildContext context) {
     return Align(
-      alignment: Alignment.bottomCenter,
+      alignment: Alignment.topLeft,
       child: Container(
-        color: Colors.black38,
-        width: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Text(
-            "By ${photoList.user.name}",
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 16.0,
-                fontWeight: FontWeight.bold),
-            maxLines: 2,
+        margin: EdgeInsets.all(16.0),
+        child: CircleAvatar(
+          backgroundColor: Colors.black12,
+          child: IconButton(
+            icon: Icon(
+              Icons.arrow_back,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
         ),
       ),

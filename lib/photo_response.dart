@@ -1,7 +1,7 @@
-class PhotoUtil {
+class PhotoResponse {
   String id;
-  String created_at;
-  String updated_at;
+  String createdAt;
+  String updatedAt;
   int width;
   int height;
   String color;
@@ -9,10 +9,10 @@ class PhotoUtil {
   PhotoUrls urls;
   User user;
 
-  PhotoUtil({
+  PhotoResponse({
     this.id,
-    this.created_at,
-    this.updated_at,
+    this.createdAt,
+    this.updatedAt,
     this.width,
     this.height,
     this.color,
@@ -21,11 +21,11 @@ class PhotoUtil {
     this.user,
   });
 
-  static PhotoUtil fromJson(Map<String, dynamic> json) {
-    return PhotoUtil(
+  static PhotoResponse fromJson(Map<String, dynamic> json) {
+    return PhotoResponse(
       id: json['id'],
-      created_at: json['created_at'],
-      updated_at: json['updated_at'],
+      createdAt: json['created_at'],
+      updatedAt: json['updated_at'],
       width: json['width'],
       height: json['height'],
       color: json['color'],
