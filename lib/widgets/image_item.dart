@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gdg_ahmedabad_codelab/detail.dart';
 import 'package:gdg_ahmedabad_codelab/photo_response.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 class ImageItemWidget extends StatelessWidget {
   final PhotoResponse data;
@@ -11,7 +10,7 @@ class ImageItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250.0,
+      height: 200.0,
       margin: EdgeInsets.all(8.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8.0),
@@ -19,18 +18,17 @@ class ImageItemWidget extends StatelessWidget {
           onTap: () {
             navigateToDetailScreen(context);
           },
-          child: Hero(
-            tag: data.urls.small,
-            child: Stack(
-              children: <Widget>[
-                FadeInImage.memoryNetwork(
-                  placeholder: kTransparentImage,
-                  image: data.urls.small,
+          child: Stack(
+            children: <Widget>[
+              Hero(
+                tag: data.urls.small,
+                child: Image.network(
+                  data.urls.full,
                   fit: BoxFit.cover,
                 ),
-                buildBottomText(),
-              ],
-            ),
+              ),
+              buildBottomText(),
+            ],
           ),
         ),
       ),
