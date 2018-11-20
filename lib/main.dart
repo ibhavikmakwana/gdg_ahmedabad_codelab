@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'Photos',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        primarySwatch: Colors.blueGrey,
       ),
       home: HomePage(),
     );
@@ -35,7 +35,6 @@ class HomePageState extends State<HomePage> {
           Icons.photo_size_select_actual,
           color: Colors.white,
         ),
-        backgroundColor: Colors.blueGrey,
         title: Text(
           'Photos',
           style: TextStyle(
@@ -50,10 +49,13 @@ class HomePageState extends State<HomePage> {
           if (snapshot.hasData) {
             return buildPhotosListView(snapshot);
           } else if (snapshot.hasError) {
-            print(snapshot.error);
-            return Center(child: Text("${snapshot.error}"));
+            return Center(
+              child: Text("${snapshot.error}"),
+            );
           }
-          return Center(child: CircularProgressIndicator());
+          return Center(
+            child: CircularProgressIndicator(),
+          );
         },
       ),
     );
