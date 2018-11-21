@@ -27,6 +27,15 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  Future<List<PhotoResponse>> photos;
+
+
+  @override
+  void initState() {
+    super.initState();
+    photos = NetworkUtil().fetchPhotos();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +53,7 @@ class HomePageState extends State<HomePage> {
         centerTitle: true,
       ),
       body: FutureBuilder<List<PhotoResponse>>(
-        future: NetworkUtil().fetchPhotos(),
+        future: photos,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return buildPhotosListView(snapshot);
@@ -72,6 +81,7 @@ class HomePageState extends State<HomePage> {
       return ListView.builder(
         itemCount: snapshot.data.length,
         itemBuilder: (context, index) => ImageItemWidget(snapshot.data[index]),
+        addAutomaticKeepAlives: true,
       );
     } else {
       return GridView.builder(
