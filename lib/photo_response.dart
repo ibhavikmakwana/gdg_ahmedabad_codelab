@@ -40,14 +40,16 @@ class User {
   String username;
   String name;
   String bio;
+  String portfolioUrl;
 
-  User({this.username, this.name, this.bio});
+  User({this.username, this.name, this.bio, this.portfolioUrl});
 
   static User fromJson(Map<String, dynamic> json) {
     return User(
       username: json['username'],
       name: json['name'],
       bio: json['bio'],
+      portfolioUrl: json['portfolio_url'],
     );
   }
 }

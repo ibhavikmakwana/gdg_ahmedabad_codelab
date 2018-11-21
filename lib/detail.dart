@@ -14,7 +14,7 @@ class Detail extends StatelessWidget {
         body: Stack(
           children: <Widget>[
             buildImageHero(),
-            BottomAlignedText(photoList.user.name),
+            BottomAlignedText(photoList.user),
             buildBackIcon(context),
           ],
         ),

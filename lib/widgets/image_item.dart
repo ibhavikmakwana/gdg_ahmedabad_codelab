@@ -20,11 +20,13 @@ class ImageItemWidget extends StatelessWidget {
           },
           child: Stack(
             children: <Widget>[
-              Hero(
-                tag: data.urls.small,
-                child: Image.network(
-                  data.urls.full,
-                  fit: BoxFit.cover,
+              Positioned.fill(
+                child: Hero(
+                  tag: data.urls.small,
+                  child: Image.network(
+                    data.urls.full,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               buildBottomText(),
