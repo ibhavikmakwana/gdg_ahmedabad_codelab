@@ -4,10 +4,19 @@ import 'package:flutter_advanced_networkimage/flutter_advanced_networkimage.dart
 import 'package:gdg_ahmedabad_codelab/detail.dart';
 import 'package:gdg_ahmedabad_codelab/photo_response.dart';
 
-class ImageItemWidget extends StatelessWidget {
+class ImageItemWidget extends StatefulWidget {
   final PhotoResponse data;
 
-  const ImageItemWidget(this.data);
+  ImageItemWidget(this.data);
+
+  @override
+  ImageItemWidgetState createState() {
+    return new ImageItemWidgetState();
+  }
+}
+
+class ImageItemWidgetState extends State<ImageItemWidget> {
+  bool isLoded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +33,13 @@ class ImageItemWidget extends StatelessWidget {
             children: <Widget>[
               Positioned.fill(
                 child: Hero(
-                  tag: data.urls.regular,
+                  tag: widget.data.urls.regular,
                   child: Image(
-                    image: AdvancedNetworkImage(data.urls.regular,
+                    image: AdvancedNetworkImage(widget.data.urls.regular,
                         loadedCallback: () {
-                      print('It works!');
+                      setState(() {
+                        isLoded = true;
+                      });
                     }, loadFailedCallback: () {
                       print('Oh, no!');
                     }),
@@ -37,6 +48,12 @@ class ImageItemWidget extends StatelessWidget {
                 ),
               ),
               buildBottomText(),
+
+            !isLoded ? Align(
+              alignment: Alignment.center,
+              key: Key(widget.data.urls.regular),
+              child: CircularProgressIndicator(strokeWidth: 1.0,),
+            ) : Container()
             ],
           ),
         ),
@@ -54,7 +71,7 @@ class ImageItemWidget extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            "By ${data.user.name}",
+            "By ${widget.data.user.name}",
             style: TextStyle(
               color: Colors.white,
               fontSize: 16.0,
@@ -71,7 +88,7 @@ class ImageItemWidget extends StatelessWidget {
   void navigateToDetailScreen(BuildContext context) {
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => Detail(data),
+        builder: (context) => Detail(widget.data),
       ),
     );
   }
