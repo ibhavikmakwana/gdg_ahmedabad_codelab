@@ -24,7 +24,7 @@ class Detail extends StatelessWidget {
   }
 
   ///
-  Align buildBackIcon(BuildContext context) {
+  buildBackIcon(BuildContext context) {
     return Align(
       alignment: Alignment.topLeft,
       child: Container(

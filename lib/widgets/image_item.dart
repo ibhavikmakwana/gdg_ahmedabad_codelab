@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_networkimage/flutter_advanced_networkimage.dart';
-
 import 'package:gdg_ahmedabad_codelab/detail.dart';
 import 'package:gdg_ahmedabad_codelab/photo_response.dart';
 
@@ -16,7 +15,7 @@ class ImageItemWidget extends StatefulWidget {
 }
 
 class ImageItemWidgetState extends State<ImageItemWidget> {
-  bool isLoded = false;
+  bool isLoaded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +37,7 @@ class ImageItemWidgetState extends State<ImageItemWidget> {
                     image: AdvancedNetworkImage(widget.data.urls.regular,
                         loadedCallback: () {
                       setState(() {
-                        isLoded = true;
+                        isLoaded = true;
                       });
                     }, loadFailedCallback: () {
                       print('Oh, no!');
@@ -49,7 +48,7 @@ class ImageItemWidgetState extends State<ImageItemWidget> {
               ),
               buildBottomText(),
 
-            !isLoded ? Align(
+              !isLoaded ? Align(
               alignment: Alignment.center,
               key: Key(widget.data.urls.regular),
               child: CircularProgressIndicator(strokeWidth: 1.0,),
