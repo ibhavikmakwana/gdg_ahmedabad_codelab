@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'Photos',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
+        primarySwatch: Colors.deepOrange ,
       ),
       home: HomePage(),
     );
@@ -81,13 +81,13 @@ class HomePageState extends State<HomePage> {
       return ListView.builder(
         itemCount: snapshot.data.length,
         itemBuilder: (context, index) => ImageItemWidget(snapshot.data[index]),
-        addAutomaticKeepAlives: true,
       );
     } else {
       return GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
         ),
+
         itemBuilder: (context, index) => ImageItemWidget(snapshot.data[index]),
       );
     }

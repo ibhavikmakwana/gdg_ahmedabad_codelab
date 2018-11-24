@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_networkimage/flutter_advanced_networkimage.dart';
 import 'package:gdg_ahmedabad_codelab/photo_response.dart';
 import 'package:gdg_ahmedabad_codelab/widgets/bottom_aligned_text.dart';
 
@@ -46,13 +47,20 @@ class Detail extends StatelessWidget {
 
   ///Image widget
   buildImageHero() {
-    return Hero(
-      tag: photoList.urls.small,
-      child: Image.network(
-        photoList.urls.small,
-        fit: BoxFit.cover,
-        height: double.infinity,
-        width: double.infinity,
+    return Align(
+      alignment: Alignment.center,
+      child: Hero(
+        tag: photoList.urls.regular,
+        child: Image(
+          height: double.maxFinite,
+          width: double.maxFinite,
+          fit: BoxFit.cover,
+          image: AdvancedNetworkImage(photoList.urls.regular, loadedCallback: () {
+            print('It works!');
+          }, loadFailedCallback: () {
+            print('Oh, no!');
+          }),
+        ),
       ),
     );
   }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_networkimage/flutter_advanced_networkimage.dart';
+
 import 'package:gdg_ahmedabad_codelab/detail.dart';
 import 'package:gdg_ahmedabad_codelab/photo_response.dart';
 
@@ -22,9 +24,14 @@ class ImageItemWidget extends StatelessWidget {
             children: <Widget>[
               Positioned.fill(
                 child: Hero(
-                  tag: data.urls.small,
-                  child: Image.network(
-                    data.urls.full,
+                  tag: data.urls.regular,
+                  child: Image(
+                    image: AdvancedNetworkImage(data.urls.regular,
+                        loadedCallback: () {
+                      print('It works!');
+                    }, loadFailedCallback: () {
+                      print('Oh, no!');
+                    }),
                     fit: BoxFit.cover,
                   ),
                 ),

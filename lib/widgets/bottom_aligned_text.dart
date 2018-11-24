@@ -27,17 +27,19 @@ class BottomAlignedText extends StatelessWidget {
                 maxLines: 2,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                "${user.bio}",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+            user.bio != null
+                ? Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      "${user.bio}",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  )
+                : Text(''),
           ],
         ),
       ),
