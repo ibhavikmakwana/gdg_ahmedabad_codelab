@@ -31,6 +31,11 @@ class ImageItemWidgetState extends State<ImageItemWidget> {
           },
           child: Stack(
             children: <Widget>[
+              !isLoded ? Align(
+                alignment: Alignment.center,
+                key: Key(widget.data.urls.regular),
+                child: CircularProgressIndicator(strokeWidth: 1.0,),
+              ) : Container(),
               Positioned.fill(
                 child: Hero(
                   tag: widget.data.urls.regular,
@@ -49,11 +54,7 @@ class ImageItemWidgetState extends State<ImageItemWidget> {
               ),
               buildBottomText(),
 
-            !isLoded ? Align(
-              alignment: Alignment.center,
-              key: Key(widget.data.urls.regular),
-              child: CircularProgressIndicator(strokeWidth: 1.0,),
-            ) : Container()
+
             ],
           ),
         ),
