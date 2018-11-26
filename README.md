@@ -25,11 +25,11 @@ For help getting started with Flutter, view online
 
 Hit me on
 
-<a href="https://twitter.com/ibhavikmakwana"><img src="./icons/twitter-icon.png?raw=true" width="60"></a>
-<a href="https://medium.com/@ibhavikmakwana"><img src="./icons/medium-icon.png?raw=true" width="60"></a>
-<a href="https://www.linkedin.com/in/ibhavikmakwana/"><img src="./icons/linkedin-icon.png?raw=true" width="60"></a>
+<a href="https://twitter.com/ibhavikmakwana"><img src="https://github.com/ibhavikmakwana/FlutterPlayground/tree/master/icons/twitter-icon.png?raw=true" width="60"></a>
+<a href="https://medium.com/@ibhavikmakwana"><img src="https://github.com/ibhavikmakwana/FlutterPlayground/tree/master/icons/medium-icon.png?raw=true" width="60"></a>
+<a href="https://www.linkedin.com/in/ibhavikmakwana/"><img src="https://github.com/ibhavikmakwana/FlutterPlayground/tree/master/icons/linkedin-icon.png?raw=true" width="60"></a>
 
 Parth Jansari
 
-<a href="https://twitter.com/jansariparth"><img src="./icons/twitter-icon.png?raw=true" width="60"></a>
-<a href="https://medium.com/@parth_jansari"><img src="./icons/medium-icon.png?raw=true" width="60"></a>
+<a href="https://twitter.com/jansariparth"><img src="https://github.com/ibhavikmakwana/FlutterPlayground/tree/master/icons/twitter-icon.png?raw=true" width="60"></a>
+<a href="https://medium.com/@parth_jansari"><img src="https://github.com/ibhavikmakwana/FlutterPlayground/tree/master/icons/medium-icon.png?raw=true" width="60"></a>
